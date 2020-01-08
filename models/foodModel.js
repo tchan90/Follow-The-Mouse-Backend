@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const rideSchema = new Schema({
+const foodSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -12,19 +12,19 @@ const rideSchema = new Schema({
     required: true,
     trim: true,
   },
-  fastPass: {
-    type: Boolean,
+  mealType: {
+    type: String,
     required: true,
   },
-  hiddenMickey: {
-    type: Boolean,
+  service: {
+    type: String,
     required: true,
   },
   imageUrl: {
     type: String,
     trim: true,
   },
-  information: {
+  food: {
     type: String,
     required: true,
     trim: true,
@@ -38,6 +38,6 @@ const rideSchema = new Schema({
   timestamps: true,
 });
 
-const Rides = mongoose.model('Rides', rideSchema);
+const Food = mongoose.model('Restaurants', foodSchema);
 
-module.exports = Rides;
+module.exports = Food;

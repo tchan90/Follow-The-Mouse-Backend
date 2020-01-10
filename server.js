@@ -5,8 +5,6 @@ const cors = require('cors')
 const app = express()
 const apiPort = 5000
 require('dotenv').config();
-const passport = require('passport');
-
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
@@ -26,10 +24,5 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 require('./routes')(app)
-
-//Passport middleware
-app.use(passport.initialize());
-//Passport config
-require('./config/passport')(passport);
 
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))

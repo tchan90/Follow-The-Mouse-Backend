@@ -1,6 +1,8 @@
 const RideController = require('./controllers/rideController');
 const FoodController = require('./controllers/foodController');
-const UserController = require('./controllers/UserController')
+const UserController = require('./controllers/UserController');
+//authorization middleware
+const auth = require('./middleware/auth')
 module.exports = (app) => {
     //get all rides
     app.get('/rides', RideController.getAllRides)
@@ -32,7 +34,11 @@ module.exports = (app) => {
      //sign in
      app.post('/signIn', UserController.loginUser)
      //register
-     app.post('/register', UserController.postRegister)
+     app.post('/register', auth, UserController.postRegister)
      //get users
-     app.get('/getUsers', UserController.getUsers)
+     app.get('/getUsers', auth,UserController.getUsers)
+     //get specific user
+     app.get('/user/:id', auth, UserController.getSpecificUser)
+     //delete user
+     app.delete('/deleteUser/:id', auth, UserController.deleteUser)
 }
